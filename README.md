@@ -1,0 +1,1 @@
+# pythonQA_lesson6_hw
