@@ -1,22 +1,36 @@
 class Triangle:
-    def __init__(self, length1: int, length2: int, length3: int):
-        self.length1 = length1
-        self.length2 = length2
-        self.length3 = length3
+    name = 'треугольник'
+    angles = 3
 
-    # def area(self) -> int:
-    #     return self.length * self.width
+    def __init__(self, side1: int, side2: int, side3: int):
+        self.side1 = side1
+        self.side2 = side2
+        self.side3 = side3
+        if side1 + side2 <= side3 or side1 + side3 <= side2 or side2 + side3 <= side1:
+            print('треугольник не существует')
+        elif side1 != side2 and side1 != side3 and side2 != side3:
+            print('треугольник разносторонний')
+        elif side1 == side2 == side3:
+            print('треугольник равносторонний')
+        else:
+            print('треугольник равнобедренный')
+
+    def area(self) -> int:
+        return self.side1 * self.side2 * self.side3
 
     def perimeter(self) -> int:
-        return self.length1 + self.length2 + self.length3
-
-    # def angles_amount(self) -> int:
-    #     return self.angle == 4
+        return self.side1 + self.side2 + self.side3
 
     def __dir__(self):
-        return f'{self.__class__.__name__}[{self.length1} x {self.length2} x {self.length3}]'
+        return f'{self.__class__.__name__}[{self.side1} x {self.side2} x {self.side3}]'
 
 
 if __name__ == '__main__':
-    triangle = Triangle(4, 2, 2)
-    print(triangle, triangle.perimeter())
+    print('введите стороны треугольника')
+    a = int(input('a = '))
+    b = int(input('b = '))
+    c = int(input('c = '))
+    triangle = Triangle(a, b, c)
+    print(f'количество углов = {triangle.angles}')
+    print(f'периметр = {triangle.perimeter()}')
+    print(f'площадь = {triangle.area()}')
